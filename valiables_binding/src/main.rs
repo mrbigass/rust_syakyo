@@ -1,12 +1,24 @@
 fn main() {
-    let _immutable_binding = 1;
-    let mut mutable_binding = 1;
+    let long_lived_binding = 1;
 
-    println!("Before mutation : {}", mutable_binding);
+    // ここから下がmainより小さいスコープを持つ
+    {
+        let short_lived_binding = 2;
+        println!("inner short: {}", short_lived_binding);
 
-    mutable_binding += 1;
+        // スコープ外の同名の変数をシャドーイングする
+        let long_lived_binding = 5_f32;
 
-    println!("After mutation : {}", mutable_binding);
+        println!("inner long: {}", long_lived_binding);
+    } // 小スコープの終わり
 
-    // _immutable_binding += 1;
+    // error occured
+    // println!("outer short: {}", short_lived_binding);
+
+    // innerで書かれたことは持ち出されない
+    println!("outer long: {}", long_lived_binding);
+
+    let long_lived_binding = 'a';
+
+    println!("outer long: {}", long_lived_binding);
 }
