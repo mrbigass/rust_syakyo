@@ -1,24 +1,19 @@
 fn main() {
-    let long_lived_binding = 1;
+    let a_binding;
 
-    // ここから下がmainより小さいスコープを持つ
     {
-        let short_lived_binding = 2;
-        println!("inner short: {}", short_lived_binding);
+        let x = 2;
+        a_binding = x * x;
+    }
 
-        // スコープ外の同名の変数をシャドーイングする
-        let long_lived_binding = 5_f32;
+    // 外で変数の存在を宣言したので小スコープで代入をしても引き継がれる
+    println!("a binding: {}", a_binding);
 
-        println!("inner long: {}", long_lived_binding);
-    } // 小スコープの終わり
+    let another_binding;
 
-    // error occured
-    // println!("outer short: {}", short_lived_binding);
+    // println!("Another binding: {}", another_binding);
 
-    // innerで書かれたことは持ち出されない
-    println!("outer long: {}", long_lived_binding);
+    another_binding = 1;
 
-    let long_lived_binding = 'a';
-
-    println!("outer long: {}", long_lived_binding);
+    println!("another bingind: {}", another_binding);
 }
