@@ -1,19 +1,15 @@
 fn main() {
-    let a_binding;
+    let mut _mutable_integer = 7_i32;
 
     {
-        let x = 2;
-        a_binding = x * x;
-    }
+        // immutableにシャドーイング
+        let _mutable_integer = _mutable_integer;
 
-    // 外で変数の存在を宣言したので小スコープで代入をしても引き継がれる
-    println!("a binding: {}", a_binding);
+        // このスコープではフリーズしている
+        // _mutable_integer += 50;
+    } // _mutable_integerがスコープを抜ける
 
-    let another_binding;
+    _mutable_integer = 3;
 
-    // println!("Another binding: {}", another_binding);
-
-    another_binding = 1;
-
-    println!("another bingind: {}", another_binding);
+    println!("mutable in base scope: {}", _mutable_integer);
 }
