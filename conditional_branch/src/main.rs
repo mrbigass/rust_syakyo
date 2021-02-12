@@ -1,13 +1,16 @@
 fn main() {
-    let mut counter = 0;
+    let mut num = 1;
 
-    let result = loop {
-        counter += 1;
-
-        if counter == 10 {
-            break counter * 2
+    while num < 101 {
+        if num % 15 == 0 {
+            println!("FizzBuzz");
+        } else if num % 3 == 0 {
+            println!("Fizz");
+        } else if num % 5 == 0 {
+            println!("Buzz");
+        } else {
+            println!("{}", num);
         }
-    };
-
-    assert_eq!(result, 20);
+        num += 1;
+    }
 }
