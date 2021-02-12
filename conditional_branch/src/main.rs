@@ -1,12 +1,13 @@
 fn main() {
-    'outer: loop {
-        println!("Enterd the outer loop");
+    let mut counter = 0;
 
-        'inner: loop {
-            println!("Enterd the inner loop");
-            // break; // inner loopを中断
+    let result = loop {
+        counter += 1;
 
-            break 'outer; // outer loopを中断
+        if counter == 10 {
+            break counter * 2
         }
-    }
+    };
+
+    assert_eq!(result, 20);
 }
