@@ -1,7 +1,5 @@
 fn main() {
-    let mut num = 1;
-
-    while num < 101 {
+    for num in 1..=100 {
         if num % 15 == 0 {
             println!("FizzBuzz");
         } else if num % 3 == 0 {
@@ -11,6 +9,5 @@ fn main() {
         } else {
             println!("{}", num);
         }
-        num += 1;
     }
 }
