@@ -1,18 +1,12 @@
 fn main() {
-    let mut count = 0u32;
+    'outer: loop {
+        println!("Enterd the outer loop");
 
-    loop {
-        count += 1;
+        'inner: loop {
+            println!("Enterd the inner loop");
+            // break; // inner loopを中断
 
-        if count == 3 {
-            println!("three");
-        } else {
-            println!("{}", count);
+            break 'outer; // outer loopを中断
         }
-
-        if count == 5 {
-            break;
-        }
-
     }
 }
